@@ -8,11 +8,11 @@
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-6 text-center">
-                <h2>Are you sure you want to delete "{{ contact }}"?</h2>
+                <h2>Please Confirm</h2>
                 <form method="post" class="mt-4">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Confirm</button>
-                    <a href="{% url 'contact_list' %}" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                    <a href="{% url 'contact_list' %}" class="btn btn-secondary">No</a>
                 </form>
             </div>
         </div>
