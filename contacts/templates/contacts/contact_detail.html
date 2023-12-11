@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Detail</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Contact Detail</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong> {{ contact.name }}</p>
+                <p><strong>Email ID:</strong> {{ contact.email }}</p>
+                <p><strong>Phone Number:</strong> {{ contact.phone }}</p>
+                <p><strong>Notes:</strong> {{ contact.address }}</p>
+                <p><strong>Created Time:</strong> {{ contact.created_at|date:"Y-m-d H:i" }}</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'contact_list' %}" class="btn btn-outline-primary">Back to List</a>
+                <a href="{% url 'contact_edit' contact.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'contact_delete' contact.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and its dependencies (if you plan to use any Bootstrap JS components) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <span class="text-muted">&copy;  <span style="color: rgb(255, 0, 0);">Created by Achyuth Sambaraju</span></span>
+        </div>
+    </footer>
+</body>
+</html>
