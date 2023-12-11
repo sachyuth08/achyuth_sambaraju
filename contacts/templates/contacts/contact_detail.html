@@ -16,7 +16,7 @@
                 <p><strong>✉️:</strong> {{ contact.email }}</p>
                 <p><strong>☎️:</strong> {{ contact.phone }}</p>
                 <p><strong>📝:</strong> {{ contact.address }}</p>
-                <p><strong>Created Time:</strong> {{ contact.created_at|date:"Y-m-d H:i" }}</p>
+                <p><strong>Time of Creation:</strong> {{ contact.created_at|date:"Y-m-d H:i" }}</p>
             </div>
             <div class="card-footer text-center">
                 <a href="{% url 'contact_list' %}" class="btn btn-outline-primary">Back to List</a>
