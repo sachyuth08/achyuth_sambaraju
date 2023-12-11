@@ -26,10 +26,11 @@ def contact_update(request, pk):
         form = ContactForm(request.POST, instance=contact)
         if form.is_valid():
             form.save()
-            return redirect('contact_list')
+            return redirect('contact_detail', pk=contact.pk)
     else:
         form = ContactForm(instance=contact)
-    return render(request, 'contacts/contact_form.html', {'form': form})
+    return render(request, 'contacts/contact_edit.html', {'form': form, 'contact': contact})
+
 
 def contact_delete(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
