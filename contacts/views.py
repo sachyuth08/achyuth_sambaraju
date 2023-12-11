@@ -9,6 +9,17 @@ def contact_list(request):
 def contact_detail(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     return render(request, 'contacts/contact_detail.html', {'contact': contact})
+def contact_edit(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    if request.method == 'POST':
+        form = ContactForm(request.POST, instance=contact)
+        if form.is_valid():
+            form.save()
+            return redirect('contact_detail', pk=contact.pk)
+    else:
+        form = ContactForm(instance=contact)
+    return render(request, 'contact_form.html', {'form': form})
+
 
 def contact_create(request):
     if request.method == 'POST':
