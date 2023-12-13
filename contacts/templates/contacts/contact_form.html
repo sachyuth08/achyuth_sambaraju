@@ -1,65 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Contact</title>
+    <title>Create/ Edit</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body, html {
-            height: 100%;
+        /* Change background color of the form */
+        body {
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* White background */
         }
-        .footer {
-            background-color: #f8f9fa; /* Light grey background for footer */
-            color: #212529;
+
+        /* Change the text color for labels */
+        label {
+            color: #555;
+            font-weight: bold;
+        }
+
+        /* Change the border color and size of the input boxes */
+        .form-group input, .form-group textarea {
+            border: 2px solid #333; /* Dark gray border */
+            border-radius: 4px; /* Slightly rounded corners */
+            padding: 10px; /* Adjust padding for a clean look */
+            width: 100%; /* Make all input boxes the same width */
+            margin-bottom: 15px; /* Add some spacing between fields */
+        }
+
+        /* Reduce the height of the Notes input box */
+        .form-group textarea {
+            height: 120px; /* Adjust the height as needed */
+        }
+
+        /* Change the color of the Save button */
+        .btn-primary {
+            background-color: #007bff; /* Blue */
+            color: #fff; /* White text */
+            border: none; /* Remove button border */
+        }
+
+        /* Change the color of the Cancel button */
+        .btn-secondary {
+            background-color: #6c757d; /* Gray */
+            color: #fff; /* White text */
+            border: none; /* Remove button border */
+        }
+
+        /* Center-align the form and adjust max-width and margins */
+        .center-form {
             position: absolute;
-            bottom: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%; /* Adjust the maximum width */
             width: 100%;
-            text-align: center;
-        }
-        .footer .text-muted {
-            color: #6c757d!important; /* Muted text color */
-        }
-        .footer .text-muted span {
-            color: red; /* Red color for the 'Created by' part */
-        }
-        .form-control, .btn {
-            width: 100%; /* Make input fields full width */
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .btn-primary, .btn-secondary {
-            margin-top: 10px; /* Margin top for spacing */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <h2 class="text-center mt-5">Create</h2>
-                <form method="post" class="mt-4">
+            <div class="center-form">
+                <h2 class="text-center">Create/ Edit Contact</h2>
+                <form method="post">
                     {% csrf_token %}
+                    <!-- Display non-field-specific errors -->
+                    {% if form.non_field_errors %}
+                      <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                      </div>
+                    {% endif %}
                     
                     <div class="form-group">
-                        <label for="id_name">Name:</label>
-                        <input type="text" id="id_name" name="name" class="form-control" placeholder="Name">
+                        <label for="id_name">Name</label>
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                          <div class="alert alert-danger">{{ form.name.errors.as_text }}</div>
+                        {% endif %}
                     </div>
                     <div class="form-group">
-                        <label for="id_email">Email:</label>
-                        <input type="email" id="id_email" name="email" class="form-control" placeholder="Email">
+                        <label for="id_email">Email</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                          <div class="alert alert-danger">{{ form.email.errors.as_text }}</div>
+                        {% endif %}
                     </div>
                     <div class="form-group">
-                        <label for="id_phone">Phone:</label>
-                        <input type="text" id="id_phone" name="phone" class="form-control" placeholder="Phone">
+                        <label for="id_phone">Phone</label>
+                        {{ form.phone }}
+                        {% if form.phone.errors %}
+                          <div class="alert alert-danger">{{ form.phone.errors.as_text }}</div>
+                        {% endif %}
                     </div>
                     <div class="form-group">
-                        <label for="id_address">Notes:</label>
-                        <textarea id="id_address" name="address" class="form-control" placeholder="Notes"></textarea>
+                        <label for="id_address">Notes</label>
+                        {{ form.address }}
+                        {% if form.address.errors %}
+                          <div class="alert alert-danger">{{ form.address.errors.as_text }}</div>
+                        {% endif %}
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">Save</button>
@@ -69,14 +109,10 @@
             </div>
         </div>
     </div>
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-            <span class="text-muted">&copy; Created by Achyuth Sambaraju</span>
-        </div>
+    <footer class="footer py-3 text-center">
+      <div class="container">
+          <span class="text-muted">&copy; <span style="color: #555;">Created by Achyuth Sambaraju</span></span>
+      </div>
     </footer>
-  
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
