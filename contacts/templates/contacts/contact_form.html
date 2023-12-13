@@ -21,41 +21,50 @@
         .form-group input, .form-group textarea {
             border: 2px solid #333; /* Dark gray border */
             border-radius: 4px; /* Slightly rounded corners */
-            padding: 10px; /* Adjust padding for a clean look */
+            padding: 8px; /* Adjust padding for a clean look */
             width: 100%; /* Make all input boxes the same width */
-            margin-bottom: 15px; /* Add some spacing between fields */
+            margin-bottom: 10px; /* Add some spacing between fields */
+        }
+
+        /* Increase the width of the input boxes */
+        .form-group input {
+            width: 100%; /* Adjust the width as needed */
         }
 
         /* Reduce the height of the Notes input box */
         .form-group textarea {
-            height: 120px; /* Adjust the height as needed */
+            height: 50px; /* Adjust the height as needed */
         }
 
-        /* Change the color of the Save button */
+        /* Change the color of the Save button to green */
         .btn-primary {
-            background-color: #007bff; /* Blue */
+            background-color: #28a745; /* Green */
             color: #fff; /* White text */
             border: none; /* Remove button border */
         }
 
         /* Change the color of the Cancel button */
         .btn-secondary {
-            background-color: #6c757d; /* Gray */
+            background-color: #ff0000; /* Gray */
             color: #fff; /* White text */
             border: none; /* Remove button border */
         }
 
         /* Center-align the form and adjust max-width and margins */
         .center-form {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 80%; /* Adjust the maximum width */
+            max-width: 1200px; /* Adjust the maximum width */
             width: 100%;
+            margin: 0 auto; /* Center the form horizontally */
             padding: 20px;
             background-color: #fff;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the footer */
+        .footer {
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 10px 0;
         }
     </style>
 </head>
@@ -63,7 +72,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="center-form">
-                <h2 class="text-center">Create/ Edit Contact</h2>
+                <h2 class="text-center">Create</h2>
                 <form method="post">
                     {% csrf_token %}
                     <!-- Display non-field-specific errors -->
@@ -109,7 +118,7 @@
             </div>
         </div>
     </div>
-    <footer class="footer py-3 text-center">
+    <footer class="footer py-3">
       <div class="container">
           <span class="text-muted">&copy; <span style="color: #555;">Created by Achyuth Sambaraju</span></span>
       </div>
